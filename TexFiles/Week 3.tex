@@ -1,0 +1,107 @@
+\section{Week 3. Fourier  Transform}
+
+\subsection{The Complex Exponential Function}
+\begin{Definition}
+    The logarithm of $z\in\mathbb C$ is defined as 
+\[\log z ~:=~ s+i\theta=\log |z|+i\tan^{-1}\left(\frac{\operatorname{Im} z}{\operatorname{Re} z}\right).\]
+\end{Definition}
+One feature of the exponential is that it satisfies an ordinary differential equation
+\[\partial_x e^{ix\xi}=i\xi e^{ix\xi}.\]
+And we can interpret the formula as saying $e^{ix\xi}$ is an eigenvector with eigenvalue $i\xi$ for the linear operator $\partial_x$.
+More details are in \textbf{Section 4.1}.
+
+
+
+%Let $f$ be a function defined on $\mathbb R^n$, and we say $f$ is locally absolutely integrable if 
+%\[\int_{\|\mathbf x\|<R}\left|f(\mathbf x)\right|d\mathbf x.\]
+
+
+
+\subsection{Fourier Transform for Functions of a Single Variable}
+\begin{Definition}[\textbf{Fourier Transform}]
+    The Fourier transformation of an $L^1$-function $f$ that defined on $\mathbb R$, is the function $\hat{f}$ defined on $\mathbb R$ by the integral
+    \[\hat{f}(\xi)=\int_{-\infty}^{\infty}f(x)e^{-ix\xi}dx.\]
+\end{Definition}
+
+
+
+The function $f$ could be reconstructed from  $\hat{f}$, by applying the following:
+
+\begin{Theorem}\label{thm_Finversion}[Theorem 4.2.1 \textbf{Fourier inversion formula}]
+    Suppose that $f$ is an $L^1$-function such that $\hat{f}$ is also in $L^1(\mathbb R)$, then 
+    \begin{equation}\label{eq_Finverse}
+        f(x)=\frac{1}{2\pi}\int_{-\infty}^{\infty}\hat{f}(\xi)e^{ix\xi}d\xi.
+    \end{equation}
+\end{Theorem}
+
+\begin{Question}
+In the proof of \ref{eq_Finverse} the author required an additional assumption that $f$ is continuous. 
+Where did we used such fact during the proof? 
+Is that on the first line of the equality in equation (\textbf{4.6}) on Page 95 of \cite{epstein2007introduction}?
+\end{Question}
+In \textbf{Remark 4.2.2.} of \cite{epstein2007introduction}, we introduced some notations. 
+\begin{align*}
+    \mathscr F (f)&=\int_{-\infty}^{\infty} f(x)e^{-ix\xi}dx,\\
+    \mathscr F^{-1} (f)&= \frac{1}{2\pi}\int_{-\infty}^{\infty}f(\xi)e^{ix\xi}d\xi.
+\end{align*}
+
+\begin{proof}[The proof of Theorem \ref{thm_Finversion}]
+%For convenience, here we assume $f$ is continuous.
+First, we claim that 
+\[
+\frac{1}{2\pi} \int_{-\infty}^{\infty} \hat{f}(\xi) e^{i x \xi } d \xi 
+=  \frac{1}{2\pi} \lim_{\epsilon \rightarrow 0+} \int_{-\infty}^{\infty} \hat{f}(\xi) e^{-\epsilon \xi^2} e^{i x \xi } d \xi. 
+\]
+This comes from the dominated convergence theorem, see Theorem \ref{thm_dominated}. 
+Indeed, note that $\hat{f}(\xi) e^{i x \xi }$ converges to $\hat{f}(\xi) e^{-\epsilon \xi^2} e^{i x \xi }$ almost everywhere and 
+\[
+|\hat{f}(\xi) e^{-\epsilon \xi^2} e^{i x \xi }| \leq |\hat{f}(\xi)|, \quad \text{for } \epsilon \geq 0.
+\]
+By Theorem \ref{thm_dominated}, we have $\int_{-\infty}^{\infty} \hat{f}(\xi) e^{-\epsilon \xi^2} e^{i x \xi } d \xi$ converges to $\int_{-\infty}^{\infty} \hat{f}(\xi) e^{i x \xi } d \xi$ as $\epsilon \rightarrow 0$.
+
+Next, we plug in the Fourier transform formula for $\hat{f}$ to have
+\[
+\int_{-\infty}^{\infty} \hat{f}(\xi) e^{-\epsilon \xi^2} e^{i x \xi } d \xi 
+= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty}   {f}(y) e^{-\epsilon \xi^2} e^{i (x-y)\xi } d y d \xi.
+\]
+This iterated integral is absolutely integrable.
+Then by Fubini's theorem, see Theorem B.8.1, 
+we can interchange the order of the integration to have
+\[
+\int_{-\infty}^{\infty} \int_{-\infty}^{\infty}   {f}(y) e^{-\epsilon \xi^2} e^{i (x-y)\xi } d y d \xi = 
+\int_{-\infty}^{\infty}  {f}(y) (\int_{-\infty}^{\infty} e^{-\epsilon \xi^2} e^{i (x-y)\xi } d \xi) d y.
+\]
+By \textbf{Example 4.2.4}, we have
+\[
+\mathscr{F}( e^{-\epsilon \xi^2})(x-y) = \sqrt{\frac{\pi}{\epsilon}} e^{- \frac{(x-y)^2}{4\epsilon}}.
+\]
+This implies that
+\begin{align*}
+\frac{1}{2\pi} \int_{-\infty}^{\infty} \hat{f}(\xi) e^{i x \xi } d \xi 
+&=  \frac{1}{2\sqrt{\pi \epsilon}} \lim_{\epsilon \rightarrow 0+} \int_{-\infty}^{\infty} {f}(y)  e^{- \frac{(x-y)^2}{4\epsilon}} d y\\
+&= \frac{1}{\sqrt{\pi}} \lim_{\epsilon \rightarrow 0+} \int_{-\infty}^{\infty} {f}(x-2 \epsilon t)  e^{- \frac{-t^2}{4\epsilon}} d t,
+\end{align*}
+where to get the last equality we make substitution $t = {(x-y)}/(2 \sqrt{\epsilon})$.
+Again by the dominated convergence theorem (note that $f$ is $L^1$), the last integral converges to 
+\[
+\frac{1}{\sqrt{\pi}} \int_{-\infty}^{\infty} {f}(x)  e^{- \frac{-t^2}{4\epsilon}} d t = f(x). 
+\]
+\end{proof}
+
+
+Here's an important example 4.2.2. in \cite{epstein2007introduction}.
+
+\begin{example}
+    Define the function 
+\end{example}
+
+
+\begin{example}[Example 4.2.4]
+The Gaussian, $e^{-x^2}$, is a function of considerable importance in image processing and mathematics.
+Its Fourier transform is still a Gaussian function 
+\[
+\mathcal{F}(e^{-x^2})(\xi) = \int_{-\infty}^\infty e^{-x^2} e^{-ix \xi} d x = \sqrt{\pi} e^{-\xi^2/4}.
+\]
+The proof is based on complex contour integral, see Section 4.2.3.
+\end{example}
+
