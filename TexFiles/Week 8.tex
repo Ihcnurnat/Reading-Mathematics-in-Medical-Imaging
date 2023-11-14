@@ -1,0 +1,21 @@
+\section{Week 8.}
+
+\subsection{Convolution}
+
+Our interest is to study a smooth function of one variable with data contaminated by noise. And we let $n$ be the function that "\textit{models}" the noise. This Noise function $n$, is typically represented by a rapidly varying function that is \textit{locally of mean zero}.
+\begin{definition}
+    We say a rapidly varying function is \textit{locally of mean zero} if for any $x$, and a large enought $\delta$, the average 
+    \[\frac{1}{\delta}\int_{x}^{x+\delta} n(y)\,dy\]
+    is small compared to the size of $n$.
+\end{definition}
+
+\begin{question}
+    How do we define size of $n$?
+\end{question}
+
+\begin{definition}
+    The \textit{moving average} of $f$ is defined to be 
+    \[\mathcal M_{\delta}(f)(x)=\frac{1}{\delta}\int_{x}^{x+\delta}f(y)\,dy.\]
+\end{definition}
+    
+???
