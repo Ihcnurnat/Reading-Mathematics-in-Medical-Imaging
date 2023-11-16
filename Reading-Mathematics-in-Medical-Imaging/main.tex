@@ -1,0 +1,123 @@
+%\documentclass[12pt, a4paper]{amsart}
+\documentclass[12pt, a4paper]{article}
+\usepackage[margin = 2.8cm]{geometry}
+\usepackage[title]{appendix}
+\usepackage{mathtools}
+\usepackage{setspace}
+\usepackage{textcomp}
+\usepackage{enumerate}
+\usepackage{quiver}
+\usepackage{graphicx}
+\usepackage{indentfirst}
+\usepackage{import}
+\usepackage{subfigure}
+%\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+%\hypersetup{urlcolor=blue, citecolor=red}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{color,soul}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newtheorem{thm}{Theorem}[section]
+
+
+
+\theoremstyle{definition}
+
+\newtheorem{Definition}{Definition}
+\newtheorem{definition}{Definition}
+%\newtheorem{def}{Definition}
+\newtheorem{df}{Definition}
+
+\newtheorem{Remark}{Remark}
+\newtheorem{remark}{Remark}
+
+\newtheorem{Example}{Example}
+\newtheorem{example}{Example}
+
+\newtheorem{Exercise}{Exercise}
+\newtheorem{exercise}{Exercise}
+\newtheorem*{anw}{Answer}
+
+\newtheorem{Assumption}{Assumption}
+\newtheorem{assumption}{Assumption}
+
+\newtheorem*{Question}{Question}
+\newtheorem*{question}{Question}
+
+\newtheorem{Theorem}{Theorem}
+\newtheorem{theorem}{Theorem}
+
+\newtheorem{Lemma}{Lemma}
+\newtheorem{lemma}{Lemma}
+
+\newtheorem{Proposition}{Proposition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{prop}{Proposition}
+
+\newtheorem{Corollary}{Corollary}
+\newtheorem{corollary}{Corollary}
+\newtheorem{coro}{Corollary}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Rn}{\mathbb{R}^n}
+\newcommand{\qCm}{{{\teal Q}}}
+
+
+
+% todo comments, see here:
+% http://tug.ctan.org/macros/latex/contrib/todonotes/todonotes.pdf
+% https://ctan.org/pkg/todonotes
+\usepackage{ifthen,xkeyval,xcolor,graphicx,calc,tikz}
+% refers to here: http://tug.ctan.org/macros/latex/contrib/todonotes/todonotes.pdf
+\usepackage{todonotes}
+%\usepackage[table]{xcolor}
+\usepackage{menukeys}
+\setuptodonotes{fancyline, color=orange!60}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\title{\textbf{Weekly Reading Summary}}
+%\author{Yang Zhang, Runchi Tan}
+%\address[1]{}
+%\date{\today}
+
+\begin{document}
+
+\maketitle
+\subimport{TexFiles}{Week 0.tex}
+\tableofcontents
+\newpage\subimport{TexFiles}{Week 1.tex}
+\newpage\subimport{TexFiles}{Week 2.tex}
+\newpage\subimport{TexFiles}{Week 3.tex}
+\newpage\subimport{TexFiles}{Week 4.tex}
+\newpage\subimport{TexFiles}{Week 5.tex}
+\newpage\subimport{TexFiles}{Week 6.tex}
+\newpage\subimport{TexFiles}{Week 7.tex}
+\newpage\subimport{TexFiles}{Week 8.tex}
+%\newpage\subimport{TexFiles}{Week 9.tex}
+
+
+
+\newpage\bibliography{reference}
+\bibliographystyle{plain}
+
+\end{document}
+
+
+
+
+
+
+
+

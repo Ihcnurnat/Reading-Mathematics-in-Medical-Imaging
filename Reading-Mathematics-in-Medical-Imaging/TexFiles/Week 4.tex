@@ -1,0 +1,37 @@
+\section{Week 4 Dominated Convergence Theorem}
+
+In this week we read some definitions and results in Stein's textbook \cite{stein2009real}.
+
+\subsection{Measurable Functions}
+\begin{Theorem}[{\cite[Chapter 1, Theorem 1.4 \& Chapter 2, Theorem 1.13]{stein2009real}}]
+    Every open subset $\mathcal O$ of $\mathbb R^d$, $d \geq 1$, can be written as a countable union of \textit{almost disjoint} closed cubes.
+\end{Theorem}
+
+Exterior measure $m_{\ast}$, which attempts to describe the volume of a set $E$ by approximating it from the outside, assigns to any subset of $\mathbb R^d$ a first notion of size.
+
+Properties of Exterior Measure
+
+\subsection{Convergence Theorem}
+\begin{Theorem}[{\cite[Chapter 2, Theorem 1.13]{stein2009real}}]\label{thm_dominated}
+    Suppose $\{f_n\}$ is a sequence of measurable functions such that $f_n(x) \to f(x)$ a.e. $x$, as n tends to infinity. If $\vert f_n(x)\vert \leq g(x)$, where $g$ is absolutely integrable, then
+    \[\int \vert f_n-f\vert \to 0 ~\text{ as }~ n\to \infty,\]
+    and consequently
+    \[\int f_n\to \int f ~\text{ as }~ n\to \infty.\]
+\end{Theorem}
+
+
+
+In this case, we can first integrate and then take the limit, which will give us $\int f$.
+
+
+\subsection{Some Notations}
+The limit inferior and limit superior of a sequence ${x_n}$ are defined by
+\[
+\liminf_{n \rightarrow \infty} x_n \coloneqq \lim_{n \rightarrow \infty}(\inf_{m \geq n} x_m),
+\qquad 
+\limsup_{n \rightarrow \infty} x_n \coloneqq \lim_{n \rightarrow \infty}(\sup_{m \geq n} x_m).
+\]
+If $\liminf_{n \rightarrow \infty} x_n$ exists, then it is the largest real number $a$ such that for any $\epsilon > 0$, there exists an integer $N$ satisfying $x_n > a - \epsilon$ for any $n > N$.
+Only finitely many elements of the sequence are less than $a - \epsilon$.
+Similarly, if $\limsup_{n \rightarrow \infty} x_n$ exists, then it is the smallest real number $b$ such that for any $\epsilon > 0$, there exists an integer $N$ satisfying $x_n < b + \epsilon$ for any $n > N$.
+Only finitely many elements of the sequence are greater than $b + \epsilon$.

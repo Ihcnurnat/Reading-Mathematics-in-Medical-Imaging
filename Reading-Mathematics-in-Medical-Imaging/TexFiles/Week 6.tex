@@ -1,0 +1,102 @@
+\section{Week 6.}
+
+\subsection{Fourier Transformation on $L^2(\mathbb R)$}
+
+According to this pathological example \ref{Proposition 4.2.4.}, we know being absolutely integrable and square integrable won't imply between themselves. They're "parallel", and the present of both conditions will give us a stronger statement, namely Parseval formula. This formula tells us when will the Fourier transformation of a function $\hat{f}$ be square integrable, and it gave an explicit description for $L^2$-norm of $\hat{f}$.
+
+\begin{Question}
+    How about $L^1$ function? Fourier inversion formula assumed a priori $\hat{f}\in L^1(\mathbb R)$. 
+    Only tool we have seems to be Riemann-Lebesgue Lemma, which states certain nice "decay" property for $L^1$ functions. But all we can conclude, under condition of Riemann-Lebesgue is that function is continuous and will go to zero at infinity. One na\"ive hope is that this will be enough to deduce it's in $L^1$, but it appears to be false? See a post \href{https://math.stackexchange.com/questions/465509/conditions-for-the-fourier-transform-of-an-l1-function-to-be-in-l1}{HERE}, which redirects us to Chapter 8 of \cite{folland1999real}.
+\end{Question}
+
+\begin{Example}
+    There are something in $L^2$, after Fourier transform, not in $1/x$.
+\end{Example}
+
+We defined Fourier transformation for $L^1$- functions. In fact, we can extend Fourier transformation to $L^2(\mathbb R)$ as follows:
+
+Let $f\in L^2(\mathbb R)$ and for each real nubmer $R>0$ define 
+\[\hat{f}_R(\xi) = \int_{-R}^R f(x)e^{-ix\xi} \,dx.\]
+Parseval's formula gives us, for $R_1< R_2$, 
+\begin{equation}\label{Eq 4.34}
+    \lVert \hat{f}_{R_1}-\hat{f}_{R_2}\rVert^2_{L^2}=2\pi \int_{R_1\leq \vert x\vert \leq R_2} \vert f(x)\vert^2 \,dx
+\end{equation}
+
+Notice that $f$ being $L^2$ forces RHS of \ref{Eq 4.34} goes to $0$ when $R_1\to\infty$ and $R_2\to\infty$. Since otherwise the integral will be infinity, contradicts the definition.
+
+Hence we know sequence $\{\hat{f}_R\}_{R\in\mathbb R}$ is Cauchy. While $L^2(\mathbb R)$ is complete and normed vector space, we can define it's limit inside $L^2(\mathbb R)$. In summary, we define $\hat{f}$ as this limit. One convention: we call limit of a sequence in $L^2$-norm a \textit{limit in the mean} and denote it by $\operatorname{LIM}$.
+\begin{Definition}[Defintion 4.2.5.] 
+    If $f$ is a function in $L^2(\mathbb R)$, then its Fourier transform is defined to be 
+    \begin{equation*}
+\hat{f}=\operatorname{LIM}_{R\to\infty}\hat{f}_R.
+    \end{equation*}
+\end{Definition}
+
+\begin{Proposition}[Proposition 4.2.5.]
+
+\textit{The Fourier transform extends to define a continuous map from $L^2(\mathbb R)$ to itself. If $f\in L^2(\mathbb R)$, then \begin{equation*}
+    \int_{-\infty}^{\infty}\vert f(x)\vert ^2 \,dx=\frac{1}{2\pi}\int_{-\infty}^{\infty}\vert\hat{f}(\xi)\vert^2\,d\xi
+\end{equation*}}
+
+\end{Proposition}
+
+\begin{Question}
+    Why Parseval implies continuity of $f$?
+\end{Question}
+
+A consequence of Parseval's formula is uniqueness statement. The slogan is \textit{"A  function in $L^2$ is determined by its Fourier transform."}
+
+One application is to determine whether two functions in $L^2(\mathbb R)$ are equal, we can compute Fourier transformation of their subtraction. More precisely, it's the following corollary
+
+\begin{coro}
+    If $f\in L^2(\mathbb R)$ and $\hat{f}=0$, then $f\equiv 0$.
+\end{coro}
+
+\begin{prop}[\textbf{Fourier inversion for $L^2(\mathbb R)$}]
+
+
+\end{prop}
+
+Here we give a summary of basic properties of Fourier transform that hold for \hl{integrable} function or $L^2$-functions. 
+
+\begin{Question}
+    Why not absolutely integrable? Connections between integrable and absolutely integrable. I saw a post \href{https://math.stackexchange.com/questions/2255939/does-absolute-integrability-imply-integrability}{HERE}.
+\end{Question}
+
+\begin{itemize}
+    \item \texttt{LINEARITY}:
+    \item \texttt{SCALING}:
+    \item \texttt{TRANSLATION}: Let $f_t$ be the function $f$ shifted by $t$ [i.e., $f_t(x)=f(x-t)$]. The Fourier transform of $f_t$ is given by \begin{align*}
+        \hat{f_t}(\xi) =& \int_{-\infty}^{\infty} f(x-t)e^{-i\xi x}\,dx\\
+        =& \int f(y)e^{-i\xi(y+t)}\,dy\\
+        =& e^{-i\xi t} \hat{f}(\xi).
+    \end{align*}
+    \item \texttt{REALITY}: If $f$ is a real-valued function, then its Fourier transform satisfies \(\hat{f}(\xi)=\overline{\hat{f}(-\xi)}\). This shows that the Fourier transform of a real-valued function is completely determined by its values for positive (or negative) frequencies. \todo{?}
+    \item \texttt{EVENNESS}:
+\end{itemize}
+
+Figure 4.6.
+
+Figure 4.7.
+
+\subsection{A General Principle in Functional Analysis}
+
+As we know \textit{completeness} is such an important property for a normed linear space, we recall defintion of \textit{dense} with a theorem. \begin{Question}
+    Is this saying every normed linear space is complete or just saying it's a property might or might not have?
+\end{Question}
+
+Whenever we have a dense subspace $S\subset V$ where $(V,\lVert \cdot\rVert)$ is a normed linear space, we can use a sequence of points from $V$ to approach the point in $S$.
+\begin{Definition}[Defintion 4.2.7.]
+Let $(V,\lVert \cdot\rVert)$ be a normed linear space. A subspace $S$ of $V$ is \textit{dense} if for every $\mathbf v\in V$ there is a sequence $\{\mathbf v_k\}_{k\in\mathbb N}\subset S$ such that 
+\[\lim_{k\to\infty}\lVert \mathbf v-\mathbf v_k\rVert =0.\]
+\end{Definition}
+
+Here we'll introduce a theorem that gives us a general principle: a bounded linear map, defined on a dense subset, extends to the whole space. 
+
+\begin{Theorem}[Theorem 4.2.4.]
+    \textit{Let $(V_1,\lVert\cdot\rVert)$ and $(V_2,\lVert\cdot\rVert)$ be normed, linear spaces and assume that $V_2$ is complete. Suppose that $S_1$ is a dense subspace of $V_1$ and $A$ is a linear map from $S_1$ to $V_2$. If there exists a constant $M$ such that \[\lVert A\mathbf v\rVert_2\leq M\lVert \mathbf v\rVert_1,\] for all $\mathbf v$ in $S_1$, then $A$ extends to define a linear map from $V_1$ to $V_2$, satisfying the same esimate.}
+\end{Theorem}
+
+\begin{Question}
+    How did we define linear space? "Satisfying the same estimate" means we have the above inequality, but $\mathbf v$ could be chosen from the whole space $V_1$?
+\end{Question}
